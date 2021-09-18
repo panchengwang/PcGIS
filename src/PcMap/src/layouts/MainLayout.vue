@@ -13,10 +13,10 @@
         </q-btn>
 
         <q-toolbar-title>
-          Quasar App
+          PcMap
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>wang_wang_lao@163.com</div>
       </q-toolbar>
     </q-header>
 
