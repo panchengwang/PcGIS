@@ -1,1 +1,16 @@
 // app global css in SCSS form
+.gmnoprint {
+  display: none !important;
+}
+
+.gm-style-moc{
+  display: none !important;
+}
+
+.bk_google > div:nth-child(2) {
+  display: none !important;
+}
+
+.bk_google > div:nth-child(1) > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(5) > div > div > div {
+  display: none !important;
+}
