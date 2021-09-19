@@ -40,12 +40,14 @@ function initTiandituMap (control) {
   let center = toLonLat(control.view.getCenter())
   center = gcj02CorrectTianditu(control, center)
   const zoom = control.view.getZoom()
+  // const maptype = getTiandituMapTypeID(control.backgroundMap)
   // eslint-disable-next-line no-undef
   control.bkMapTianditu = new T.Map(control.ids.tiandituID, {})
   // eslint-disable-next-line no-undef
   control.bkMapTianditu.centerAndZoom(new T.LngLat(center[0], center[1]), zoom)
   // eslint-disable-next-line no-undef
-
+  changeTiandituMap(control)
+  // updateTiandituView(control)
   control.view.on('change:center', (e) => {
     updateTiandituView(control)
   })
