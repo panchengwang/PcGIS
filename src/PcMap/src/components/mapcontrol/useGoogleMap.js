@@ -20,7 +20,7 @@ function useGoogleMap (control) {
     width: '100%',
     height: '100%',
     'min-height': 'inherit'
-  })
+  }).addClass('bk_google')
   if (window.__googleMapAPIOK) {
     initGoogleMap(control)
   } else {
@@ -62,10 +62,16 @@ function initGoogleMap (control) {
   }
   // eslint-disable-next-line no-undef
   control.bkMapGoogle = new google.maps.Map(document.getElementById(control.ids.googleID), mapOptions)
-  setInterval(() => {
-    $('.gmnoprint').remove()
-    $('#' + control.ids.googleID + ' > div:nth-child(2)').remove()
-  }, 300)
+
+  // setInterval(() => {
+  //   $('.gmnoprint').hide()
+  //   $('#' + control.ids.googleID + ' > div:nth-child(2)').hide()
+  //   // $('#' + control.ids.googleID + ' > div > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(4) > div > div > div').hide()
+  //   // const divs = document.querySelectorAll('#' + control.ids.googleID + ' > div > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(4) > div > div > div')
+  //   // for (let i = 0; i < divs.length; i++) {
+  //   //   divs[i].style.display = 'none'
+  //   // }
+  // }, 1000)
   control.view.on('change:center', (e) => {
     updateGoogleView(control)
   })
