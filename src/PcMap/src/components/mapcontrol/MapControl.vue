@@ -3,7 +3,7 @@
     <div class="full" :id="control.ids.olID" style="z-index: 2;">
       <q-resize-observer @resize="onOlMapResize" />
     </div>
-    <div class="full" :id="control.ids.bkID" style="z-index: 1;"></div>
+    <div class="full" :id="control.ids.bkID" style="z-index: 3;"></div>
   </div>
   <background-map-switcher dense :backgroundMap="BackgroundMapType.OSM"
     @backgroundMapChanged="onBackgroundMapChanged"
