@@ -1,7 +1,7 @@
 const MapKeys = {
   google: '',
   tianditu: '',
-  gaode: ''
+  gaode: 'aaa'
 }
 
 export {
