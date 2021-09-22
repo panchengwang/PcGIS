@@ -3,6 +3,7 @@ import { useGoogleMap } from './useGoogleMap'
 import { useTiandituMap } from './useTianDiTu'
 import { useGaodeMap } from './useGaodeMap'
 import { useBingMap } from './useBingMap'
+// import { useBaiduMap } from './useBaiduMap'
 import $ from 'jQuery'
 
 const BackgroundMapType = {
@@ -25,7 +26,11 @@ const BackgroundMapType = {
   GAODE_ROADNET_SATELLITE: 15,
 
   BING_ROADMAP: 16,
-  BING_SATELLITE: 17
+  BING_SATELLITE: 17,
+
+  BAIDU_NORMAL_MAP: 18,
+  BAIDU_SATELLITE_MAP: 19,
+  BAIDU_HYBRID_MAP: 20
 }
 
 function useBackgroundMap (props, context, control) {
@@ -98,6 +103,20 @@ function setBackGroundMap (control, bkmap) {
     if (control.bkMapBing) {
       $('#' + control.ids.bingID).hide()
     }
+  }
+
+  if (bkmap === BackgroundMapType.BAIDU_NORMAL_MAP ||
+    bkmap === BackgroundMapType.BAIDU_SATELLITE_MAP ||
+    bkmap === BackgroundMapType.BAIDU_HYBRID_MAP) {
+  //   useBaiduMap(control)
+  //   if (control.bkMapBaidu) {
+  //     $('#' + control.ids.baiduID).show()
+  //   }
+  // } else {
+  //   if (control.bkMapBaidu) {
+  //     $('#' + control.ids.baiduID).show()
+  //   }
+    window.alert('由于百度的坐标系问题，暂缓支持使用百度地图作为背景图')
   }
 }
 

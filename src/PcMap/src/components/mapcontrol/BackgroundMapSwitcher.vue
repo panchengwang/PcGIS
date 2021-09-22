@@ -78,6 +78,15 @@ export default defineComponent({
     }, {
       label: '必应影像(需强制出国代理)',
       value: BackgroundMapType.BING_SATELLITE
+    }, {
+      label: '百度地图',
+      value: BackgroundMapType.BAIDU_NORMAL_MAP
+    }, {
+      label: '百度影像',
+      value: BackgroundMapType.BAIDU_SATELLITE_MAP
+    }, {
+      label: '百度路网+影像',
+      value: BackgroundMapType.BAIDU_HYBRID_MAP
     }]
 
     const onSelectedValueChanged = (val) => {
