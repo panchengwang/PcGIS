@@ -2,6 +2,7 @@
 .thumbs.db
 node_modules
 _MapKeys.js
+MapKeys.js
 
 # Quasar core related directories
 .quasar
