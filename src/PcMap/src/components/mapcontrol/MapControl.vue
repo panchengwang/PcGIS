@@ -5,7 +5,7 @@
     </div>
     <div class="full" :id="control.ids.bkID" style="z-index: 1;"></div>
   </div>
-  <background-map-switcher dense :backgroundMap="BackgroundMapType.OSM"
+  <background-map-switcher dense :backgroundMap="backgroundMap"
     @backgroundMapChanged="onBackgroundMapChanged"
     style="z-index: 3;position: absolute; top: 10px; right: 10px; min-width: 180px" />
 </template>
@@ -23,7 +23,7 @@ export default defineComponent({
   name: 'MapControl',
   props: {
     backgroundMap: {
-      type: String,
+      type: Number,
       required: false
     },
     view: {
@@ -57,14 +57,19 @@ export default defineComponent({
       bkMapTianditu: null,
       bkMapGaode: null,
       bkMapBing: null,
+      bkMapBaidu: null,
+      bkMapQQ: null,
       backgroundMap: props.backgroundMap,
       // 是否需要gcj02纠偏
       gcj02Correct: props.gcj02Correct
     }
 
+    console.log('aaaa', control)
+
     onMounted(() => {
       useOpenLayers(props, context, control)
       useBackgroundMap(props, context, control)
+      setBackGroundMap(control, control.backgroundMap)
     })
 
     const onOlMapResize = () => {
