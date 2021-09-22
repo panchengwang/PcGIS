@@ -3,34 +3,41 @@ import { useGoogleMap } from './useGoogleMap'
 import { useTiandituMap } from './useTianDiTu'
 import { useGaodeMap } from './useGaodeMap'
 import { useBingMap } from './useBingMap'
+import { useQQMap } from './useQQMap'
 // import { useBaiduMap } from './useBaiduMap'
 import $ from 'jQuery'
 
 const BackgroundMapType = {
   OPENSTREETMAP: 1,
   OSM: 1,
-  GOOGLE_SATELLITE: 2,
-  GOOGLE_ROADMAP: 3,
-  GOOGLE_HYBRID: 4,
-  GOOGLE_TERRAIN: 5,
-  TIANDITU_NORMAL_MAP: 6,
-  TIANDITU_SATELLITE_MAP: 7,
-  TIANDITU_HYBRID_MAP: 8,
-  TIANDITU_TERRAIN_MAP: 9,
-  TIANDITU_TERRAIN_HYBRID_MAP: 10,
 
-  GAODE_STANDARD: 11,
-  GAODE_SATELLITE: 12,
-  GAODE_ROADNET: 13,
-  GAODE_TRAFFIC: 14,
-  GAODE_ROADNET_SATELLITE: 15,
+  GOOGLE_SATELLITE: 21,
+  GOOGLE_ROADMAP: 22,
+  GOOGLE_HYBRID: 23,
+  GOOGLE_TERRAIN: 24,
 
-  BING_ROADMAP: 16,
-  BING_SATELLITE: 17,
+  TIANDITU_NORMAL_MAP: 31,
+  TIANDITU_SATELLITE_MAP: 32,
+  TIANDITU_HYBRID_MAP: 33,
+  TIANDITU_TERRAIN_MAP: 34,
+  TIANDITU_TERRAIN_HYBRID_MAP: 35,
 
-  BAIDU_NORMAL_MAP: 18,
-  BAIDU_SATELLITE_MAP: 19,
-  BAIDU_HYBRID_MAP: 20
+  GAODE_STANDARD: 41,
+  GAODE_SATELLITE: 42,
+  GAODE_ROADNET: 43,
+  GAODE_TRAFFIC: 44,
+  GAODE_ROADNET_SATELLITE: 45,
+
+  BING_ROADMAP: 51,
+  BING_SATELLITE: 52,
+
+  BAIDU_NORMAL_MAP: 61,
+  BAIDU_SATELLITE_MAP: 62,
+  BAIDU_HYBRID_MAP: 63,
+
+  QQ_ROAD: 71,
+  QQ_SATELLITE: 72,
+  QQ_ROAD_SATELLITE: 73
 }
 
 function useBackgroundMap (props, context, control) {
@@ -44,11 +51,13 @@ function useBackgroundMap (props, context, control) {
 
 function setBackGroundMap (control, bkmap) {
   control.backgroundMap = bkmap
+
   if (bkmap === BackgroundMapType.OPENSTREETMAP) {
     control.bkMapOSM.setVisible(true)
   } else {
     control.bkMapOSM.setVisible(false)
   }
+
   if (bkmap === BackgroundMapType.GOOGLE_HYBRID ||
     bkmap === BackgroundMapType.GOOGLE_ROADMAP ||
     bkmap === BackgroundMapType.GOOGLE_SATELLITE ||
@@ -90,6 +99,19 @@ function setBackGroundMap (control, bkmap) {
   } else {
     if (control.bkMapGaode) {
       $('#' + control.ids.gaodeID).hide()
+    }
+  }
+
+  if (bkmap === BackgroundMapType.QQ_ROAD ||
+    bkmap === BackgroundMapType.QQ_SATELLITE ||
+    bkmap === BackgroundMapType.QQ_ROAD_SATELLITE) {
+    useQQMap(control)
+    if (control.bkMapQQ) {
+      $('#' + control.ids.qqID).show()
+    }
+  } else {
+    if (control.bkMapQQ) {
+      $('#' + control.ids.qqID).hide()
     }
   }
 
