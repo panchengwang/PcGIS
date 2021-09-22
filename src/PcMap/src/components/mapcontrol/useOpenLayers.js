@@ -10,7 +10,7 @@ import { defaults as olDefaultControls } from 'ol/control'
 function useOpenLayers (props, context, control) {
   control.bkMapOSM = new TileLayer({
     source: new OSM(),
-    visible: true
+    visible: false
   })
 
   control.view = new View({
