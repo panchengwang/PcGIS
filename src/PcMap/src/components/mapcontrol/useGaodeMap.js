@@ -6,7 +6,6 @@ import { wgs84togcj02 } from './Gcj02Correct'
 import { MapKeys } from './MapKeys'
 
 window.__gaodeMapAPIOK = false
-// const __tiandituMapAPIKey = '2e1e0958d50f81774142f573f690f97d'
 
 function useGaodeMap (control) {
   if (control.bkMapGaode) {
