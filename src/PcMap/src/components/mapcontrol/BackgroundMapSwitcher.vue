@@ -57,6 +57,21 @@ export default defineComponent({
     }, {
       label: '天地图地形+路网',
       value: BackgroundMapType.TIANDITU_TERRAIN_HYBRID_MAP
+    }, {
+      label: '高德地图',
+      value: BackgroundMapType.GAODE_STANDARD
+    }, {
+      label: '高德影像',
+      value: BackgroundMapType.GAODE_SATELLITE
+    }, {
+      label: '高德路网',
+      value: BackgroundMapType.GAODE_ROADNET
+    }, {
+      label: '高德交通',
+      value: BackgroundMapType.GAODE_TRAFFIC
+    }, {
+      label: '高德路网+影像',
+      value: BackgroundMapType.GAODE_ROADNET_SATELLITE
     }]
 
     const onSelectedValueChanged = (val) => {
