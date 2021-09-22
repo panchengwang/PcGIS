@@ -55,6 +55,7 @@ export default defineComponent({
       bkMapOSM: null,
       bkMapGoogle: null,
       bkMapTianditu: null,
+      bkMapGaode: null,
       backgroundMap: props.backgroundMap,
       // 是否需要gcj02纠偏
       gcj02Correct: props.gcj02Correct
