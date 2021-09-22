@@ -43,21 +43,6 @@ export default defineComponent({
       label: '谷歌地形(需出国代理)',
       value: BackgroundMapType.GOOGLE_TERRAIN
     }, {
-      label: '天地图街道地图',
-      value: BackgroundMapType.TIANDITU_NORMAL_MAP
-    }, {
-      label: '天地图卫星影像',
-      value: BackgroundMapType.TIANDITU_SATELLITE_MAP
-    }, {
-      label: '天地图混合地图',
-      value: BackgroundMapType.TIANDITU_HYBRID_MAP
-    }, {
-      label: '天地图地形',
-      value: BackgroundMapType.TIANDITU_TERRAIN_MAP
-    }, {
-      label: '天地图地形+路网',
-      value: BackgroundMapType.TIANDITU_TERRAIN_HYBRID_MAP
-    }, {
       label: '高德地图',
       value: BackgroundMapType.GAODE_STANDARD
     }, {
@@ -72,6 +57,30 @@ export default defineComponent({
     }, {
       label: '高德路网+影像',
       value: BackgroundMapType.GAODE_ROADNET_SATELLITE
+    }, {
+      label: '腾讯地图',
+      value: BackgroundMapType.QQ_ROAD
+    }, {
+      label: '腾讯影像',
+      value: BackgroundMapType.QQ_SATELLITE
+    }, {
+      label: '腾讯路网+影像',
+      value: BackgroundMapType.QQ_ROAD_SATELLITE
+    }, {
+      label: '天地图街道地图',
+      value: BackgroundMapType.TIANDITU_NORMAL_MAP
+    }, {
+      label: '天地图卫星影像',
+      value: BackgroundMapType.TIANDITU_SATELLITE_MAP
+    }, {
+      label: '天地图混合地图',
+      value: BackgroundMapType.TIANDITU_HYBRID_MAP
+    }, {
+      label: '天地图地形',
+      value: BackgroundMapType.TIANDITU_TERRAIN_MAP
+    }, {
+      label: '天地图地形+路网',
+      value: BackgroundMapType.TIANDITU_TERRAIN_HYBRID_MAP
     }, {
       label: '必应地图',
       value: BackgroundMapType.BING_ROADMAP
