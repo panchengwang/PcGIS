@@ -6,7 +6,7 @@
         :options="options"
         options-dense
         bg-color="grey-3"
-        style="position: absolute; top: 10px; right: 10px; min-width: 180px"
+        style=""
         @update:model-value="onSelectedValueChanged"
       />
 </template>
@@ -31,16 +31,16 @@ export default defineComponent({
       label: 'Open Street Map',
       value: BackgroundMapType.OPENSTREETMAP
     }, {
-      label: '谷歌影像',
+      label: '谷歌影像(需出国代理)',
       value: BackgroundMapType.GOOGLE_SATELLITE
     }, {
-      label: '谷歌地图',
+      label: '谷歌地图(需出国代理)',
       value: BackgroundMapType.GOOGLE_ROADMAP
     // }, {
     //   label: 'Google Hybrid',
     //   value: BackgroundMapType.GOOGLE_HYBRID
     }, {
-      label: '谷歌地形',
+      label: '谷歌地形(需出国代理)',
       value: BackgroundMapType.GOOGLE_TERRAIN
     }, {
       label: '天地图街道地图',
@@ -72,6 +72,12 @@ export default defineComponent({
     }, {
       label: '高德路网+影像',
       value: BackgroundMapType.GAODE_ROADNET_SATELLITE
+    }, {
+      label: '必应地图',
+      value: BackgroundMapType.BING_ROADMAP
+    }, {
+      label: '必应影像(需强制出国代理)',
+      value: BackgroundMapType.BING_SATELLITE
     }]
 
     const onSelectedValueChanged = (val) => {

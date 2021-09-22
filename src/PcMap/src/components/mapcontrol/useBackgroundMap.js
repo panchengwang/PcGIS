@@ -2,6 +2,7 @@ import { watch } from 'vue'
 import { useGoogleMap } from './useGoogleMap'
 import { useTiandituMap } from './useTianDiTu'
 import { useGaodeMap } from './useGaodeMap'
+import { useBingMap } from './useBingMap'
 import $ from 'jQuery'
 
 const BackgroundMapType = {
@@ -16,11 +17,15 @@ const BackgroundMapType = {
   TIANDITU_HYBRID_MAP: 8,
   TIANDITU_TERRAIN_MAP: 9,
   TIANDITU_TERRAIN_HYBRID_MAP: 10,
+
   GAODE_STANDARD: 11,
   GAODE_SATELLITE: 12,
   GAODE_ROADNET: 13,
   GAODE_TRAFFIC: 14,
-  GAODE_ROADNET_SATELLITE: 15
+  GAODE_ROADNET_SATELLITE: 15,
+
+  BING_ROADMAP: 16,
+  BING_SATELLITE: 17
 }
 
 function useBackgroundMap (props, context, control) {
@@ -80,6 +85,18 @@ function setBackGroundMap (control, bkmap) {
   } else {
     if (control.bkMapGaode) {
       $('#' + control.ids.gaodeID).hide()
+    }
+  }
+
+  if (bkmap === BackgroundMapType.BING_ROADMAP ||
+    bkmap === BackgroundMapType.BING_SATELLITE) {
+    useBingMap(control)
+    if (control.bkMapBing) {
+      $('#' + control.ids.bingID).show()
+    }
+  } else {
+    if (control.bkMapBing) {
+      $('#' + control.ids.bingID).hide()
     }
   }
 }

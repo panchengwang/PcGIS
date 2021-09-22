@@ -7,7 +7,7 @@
   </div>
   <background-map-switcher dense :backgroundMap="BackgroundMapType.OSM"
     @backgroundMapChanged="onBackgroundMapChanged"
-    style="z-index: 3;" />
+    style="z-index: 3;position: absolute; top: 10px; right: 10px; min-width: 180px" />
 </template>
 
 <script>
@@ -56,6 +56,7 @@ export default defineComponent({
       bkMapGoogle: null,
       bkMapTianditu: null,
       bkMapGaode: null,
+      bkMapBing: null,
       backgroundMap: props.backgroundMap,
       // 是否需要gcj02纠偏
       gcj02Correct: props.gcj02Correct
