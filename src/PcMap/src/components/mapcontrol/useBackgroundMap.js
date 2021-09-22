@@ -1,6 +1,7 @@
 import { watch } from 'vue'
 import { useGoogleMap } from './useGoogleMap'
 import { useTiandituMap } from './useTianDiTu'
+import { useGaodeMap } from './useGaodeMap'
 import $ from 'jQuery'
 
 const BackgroundMapType = {
@@ -14,7 +15,12 @@ const BackgroundMapType = {
   TIANDITU_SATELLITE_MAP: 7,
   TIANDITU_HYBRID_MAP: 8,
   TIANDITU_TERRAIN_MAP: 9,
-  TIANDITU_TERRAIN_HYBRID_MAP: 10
+  TIANDITU_TERRAIN_HYBRID_MAP: 10,
+  GAODE_STANDARD: 11,
+  GAODE_SATELLITE: 12,
+  GAODE_ROADNET: 13,
+  GAODE_TRAFFIC: 14,
+  GAODE_ROADNET_SATELLITE: 15
 }
 
 function useBackgroundMap (props, context, control) {
@@ -27,6 +33,7 @@ function useBackgroundMap (props, context, control) {
 }
 
 function setBackGroundMap (control, bkmap) {
+  control.backgroundMap = bkmap
   if (bkmap === BackgroundMapType.OPENSTREETMAP) {
     control.bkMapOSM.setVisible(true)
   } else {
@@ -45,6 +52,7 @@ function setBackGroundMap (control, bkmap) {
       $('#' + control.ids.googleID).hide()
     }
   }
+
   if (bkmap === BackgroundMapType.TIANDITU_HYBRID_MAP ||
     bkmap === BackgroundMapType.TIANDITU_NORMAL_MAP ||
     bkmap === BackgroundMapType.TIANDITU_SATELLITE_MAP ||
@@ -57,6 +65,21 @@ function setBackGroundMap (control, bkmap) {
   } else {
     if (control.bkMapTianditu) {
       $('#' + control.ids.tiandituID).hide()
+    }
+  }
+
+  if (bkmap === BackgroundMapType.GAODE_ROADNET ||
+    bkmap === BackgroundMapType.GAODE_SATELLITE ||
+    bkmap === BackgroundMapType.GAODE_STANDARD ||
+    bkmap === BackgroundMapType.GAODE_TRAFFIC ||
+    bkmap === BackgroundMapType.GAODE_ROADNET_SATELLITE) {
+    useGaodeMap(control)
+    if (control.bkMapGaode) {
+      $('#' + control.ids.gaodeID).show()
+    }
+  } else {
+    if (control.bkMapGaode) {
+      $('#' + control.ids.gaodeID).hide()
     }
   }
 }
