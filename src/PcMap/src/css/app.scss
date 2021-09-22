@@ -27,11 +27,16 @@
   display: none !important;
 }
 
+// bing map
 .bm_bottomLeftOverlay{
   display: none !important;
 }
 
 .bm_bottomRightOverlay{
+  display: none !important;
+}
+
+#missingCredential {
   display: none !important;
 }
 
@@ -44,5 +49,18 @@
 }
 
 .tdt-control-copyright {
+  display: none !important;
+}
+
+// QQ
+.smnoprint {
+  display: none !important;
+}
+
+.bk_qq > div > div:nth-child(2) {
+  display: none !important;
+}
+
+.bk_qq > div > div:nth-child(3) {
   display: none !important;
 }

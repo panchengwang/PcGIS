@@ -6,7 +6,6 @@ import { uid } from 'quasar'
 import { MapKeys } from './MapKeys'
 
 window.__tiandituMapAPIOK = false
-// const __tiandituMapAPIKey = '2e1e0958d50f81774142f573f690f97d'
 
 function useTiandituMap (control) {
   if (control.bkMapTianditu) {
