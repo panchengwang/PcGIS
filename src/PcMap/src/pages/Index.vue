@@ -12,14 +12,9 @@ export default defineComponent({
   name: 'PageIndex',
   components: { MapControl },
   setup () {
-    const backgroundMap = ref(BackgroundMapType.QQ_SATELLITE)
-    const changeBackground = () => {
-      console.log('change')
-      backgroundMap.value = '123'
-    }
+    const backgroundMap = ref(BackgroundMapType.OSM)
     return {
-      backgroundMap,
-      changeBackground
+      backgroundMap
     }
   }
 })
