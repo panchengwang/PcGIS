@@ -8,6 +8,8 @@ import { useQQMap } from './useQQMap'
 import $ from 'jQuery'
 
 const BackgroundMapType = {
+  NOT_SET: 0,
+
   OPENSTREETMAP: 1,
   OSM: 1,
 
@@ -37,7 +39,8 @@ const BackgroundMapType = {
 
   QQ_ROAD: 71,
   QQ_SATELLITE: 72,
-  QQ_ROAD_SATELLITE: 73
+  QQ_ROAD_SATELLITE: 73,
+  QQ_TRAFFIC: 74
 }
 
 function useBackgroundMap (props, context, control) {
@@ -104,7 +107,8 @@ function setBackGroundMap (control, bkmap) {
 
   if (bkmap === BackgroundMapType.QQ_ROAD ||
     bkmap === BackgroundMapType.QQ_SATELLITE ||
-    bkmap === BackgroundMapType.QQ_ROAD_SATELLITE) {
+    // bkmap === BackgroundMapType.QQ_ROAD_SATELLITE ||
+    bkmap === BackgroundMapType.QQ_TRAFFIC) {
     useQQMap(control)
     if (control.bkMapQQ) {
       $('#' + control.ids.qqID).show()
