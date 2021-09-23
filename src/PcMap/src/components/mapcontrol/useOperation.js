@@ -6,11 +6,11 @@ const OperationType = {
   DRAW_POLYGON: 4
 }
 
-function userOperation (control) {
+function useOperation (control) {
 
 }
 
 export {
   OperationType,
-  userOperation
+  useOperation
 }
