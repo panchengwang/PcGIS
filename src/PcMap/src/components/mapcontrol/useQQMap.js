@@ -28,28 +28,43 @@ function useQQMap (control) {
   }
 }
 
-function getQQMapTypeID (bkmap) {
-  // eslint-disable-next-line no-undef
-  let maptype = qq.maps.MapTypeId.ROADMAP
-  switch (bkmap) {
-    case BackgroundMapType.QQ_ROAD:
-      // eslint-disable-next-line no-undef
-      maptype = qq.maps.MapTypeId.ROADMAP
-      break
-    case BackgroundMapType.QQ_SATELLITE:
-      // eslint-disable-next-line no-undef
-      maptype = qq.maps.MapTypeId.SATELLITE
-      break
-    case BackgroundMapType.QQ_ROAD_SATELLITE:
-      // eslint-disable-next-line no-undef
-      maptype = qq.maps.MapTypeId.HYBRID
-      break
-  }
-  return maptype
-}
+// function getQQMapTypeID (bkmap) {
+//   // eslint-disable-next-line no-undef
+//   let maptype = qq.maps.MapTypeId.ROADMAP
+//   switch (bkmap) {
+//     case BackgroundMapType.QQ_ROAD:
+//       // eslint-disable-next-line no-undef
+//       maptype = qq.maps.MapTypeId.ROADMAP
+//       break
+//     case BackgroundMapType.QQ_SATELLITE:
+//       // eslint-disable-next-line no-undef
+//       maptype = qq.maps.MapTypeId.SATELLITE
+//       break
+//     case BackgroundMapType.QQ_ROAD_SATELLITE:
+//       // eslint-disable-next-line no-undef
+//       maptype = qq.maps.MapTypeId.HYBRID
+//       break
+//   }
+//   return maptype
+// }
 
 function changeQQMap (control) {
-  control.bkMapQQ.setMapTypeId(getQQMapTypeID(control.backgroundMap))
+  // control.bkMapQQ.setMapTypeId(getQQMapTypeID(control.backgroundMap))
+  control.bkMapQQ.setBaseMap({ type: 'vector' })
+  switch (control.backgroundMap) {
+    case BackgroundMapType.QQ_ROAD:
+      control.bkMapQQ.setBaseMap({ type: 'vector' })
+      break
+    case BackgroundMapType.QQ_SATELLITE:
+      control.bkMapQQ.setBaseMap({ type: 'satellite', features: ['base'] })
+      break
+    case BackgroundMapType.QQ_TRAFFIC:
+      control.bkMapQQ.setBaseMap([
+        { type: 'vector' },
+        { type: 'traffic' }
+      ])
+      break
+  }
   updateQQView(control)
 }
 
@@ -61,11 +76,15 @@ function gcj02CorrectQQ (control, lonlat) {
 function initQQMap (control) {
   window.__qqMapAPIOK = true
   // eslint-disable-next-line no-undef
-  control.bkMapQQ = new qq.maps.Map(document.getElementById(control.ids.qqID), {
+  control.bkMapQQ = new TMap.Map(document.getElementById(control.ids.qqID), {
+    basemap: {
+      type: 'vector'
+    }
   })
+  setTimeout(() => {
+    changeQQMap(control)
+  }, 1000)
 
-  changeQQMap(control)
-  // updateGaodeView(control)
   control.view.on('change:center', (e) => {
     updateQQView(control)
   })
@@ -79,7 +98,7 @@ function updateQQView (control) {
   center = gcj02CorrectQQ(control, center)
   const zoom = control.view.getZoom()
   // eslint-disable-next-line no-undef
-  control.bkMapQQ.setCenter(new qq.maps.LatLng(center[1], center[0]))
+  control.bkMapQQ.setCenter(new TMap.LatLng(center[1], center[0]))
   control.bkMapQQ.setZoom(zoom)
 }
 
@@ -88,7 +107,7 @@ window.__initQQMap = () => {
 }
 
 function loadQQMapAPI (control) {
-  const url = 'https://map.qq.com/api/js?v=2.exp&callback=__initQQMap&key='
+  const url = 'https://map.qq.com/api/gljs?v=1.exp&callback=__initQQMap&key='
   $.getScript(url + MapKeys.qq, () => {
     setTimeout(() => {
       initQQMap(control)
