@@ -9,7 +9,7 @@ window.__gaodeMapAPIOK = false
 
 function useGaodeMap (control) {
   if (control.bkMapGaode) {
-    changGaoDeMap(control)
+    changeGaoMap(control)
     return
   }
   control.ids.gaodeID = uid()
@@ -73,7 +73,7 @@ function initGaodeMap (control) {
   // // eslint-disable-next-line no-undef
   // control.bkMapTianditu.centerAndZoom(new T.LngLat(center[0], center[1]), zoom)
   // // eslint-disable-next-line no-undef
-  changGaoDeMap(control)
+  changeGaoMap(control)
   // updateGaodeView(control)
   control.view.on('change:center', (e) => {
     updateGaodeView(control)
@@ -116,7 +116,7 @@ function loadGaodeMapAPI (control) {
 //   // return maptype
 // }
 
-function changGaoDeMap (control) {
+function changeGaoMap (control) {
   // control.bkMapTianditu.setMapType(getGaodeMapTypeID(control.backgroundMap))
 
   control.bkMapGaodeStandard.hide()
