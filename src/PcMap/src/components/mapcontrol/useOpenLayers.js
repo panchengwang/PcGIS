@@ -6,7 +6,7 @@ import View from 'ol/View'
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer'
 import { OSM, Vector as VectorSource } from 'ol/source'
 import { defaults as olDefaultControls } from 'ol/control'
-import { userOperation } from './userOperation'
+import { useOperation } from './useOperation'
 
 function useOpenLayers (props, context, control) {
   control.bkMapOSM = new TileLayer({
@@ -39,7 +39,7 @@ function useOpenLayers (props, context, control) {
   //   olViewChanged(control)
   // })
 
-  userOperation(control)
+  useOperation(control)
 }
 
 // function olViewChanged (control) {
