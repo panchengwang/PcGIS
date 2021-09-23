@@ -5,7 +5,7 @@
     </div>
     <div class="full" :id="control.ids.bkID" style="z-index: 1;"></div>
   </div>
-  <background-map-switcher dense :backgroundMap="backgroundMap"
+  <background-map-switcher dense :backgroundMap="backgroundMap" v-if="bkmapSwitcherVisible"
     @backgroundMapChanged="onBackgroundMapChanged"
     style="z-index: 3;position: absolute; top: 10px; right: 10px; min-width: 180px" />
 </template>
@@ -17,6 +17,7 @@ import { useOpenLayers } from './useOpenLayers'
 import { useBackgroundMap, setBackGroundMap, BackgroundMapType } from './useBackgroundMap'
 import { fromLonLat } from 'ol/proj'
 import BackgroundMapSwitcher from './BackgroundMapSwitcher.vue'
+import { OperationType } from './userOperation'
 
 export default defineComponent({
   components: { BackgroundMapSwitcher },
@@ -24,7 +25,18 @@ export default defineComponent({
   props: {
     backgroundMap: {
       type: Number,
-      required: false
+      required: false,
+      default: () => { return BackgroundMapType.OPENSTREETMAP }
+    },
+    operation: {
+      type: Number,
+      required: false,
+      default: () => { return OperationType.NOTHING }
+    },
+    bkmapSwitcherVisible: {
+      type: Boolean,
+      required: true,
+      default: () => true
     },
     view: {
       type: Object,
@@ -63,8 +75,6 @@ export default defineComponent({
       // 是否需要gcj02纠偏
       gcj02Correct: props.gcj02Correct
     }
-
-    console.log('aaaa', control)
 
     onMounted(() => {
       useOpenLayers(props, context, control)
