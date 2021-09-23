@@ -17,7 +17,7 @@ import { useOpenLayers } from './useOpenLayers'
 import { useBackgroundMap, setBackGroundMap, BackgroundMapType } from './useBackgroundMap'
 import { fromLonLat } from 'ol/proj'
 import BackgroundMapSwitcher from './BackgroundMapSwitcher.vue'
-import { OperationType } from './userOperation'
+import { OperationType } from './useOperation'
 
 export default defineComponent({
   components: { BackgroundMapSwitcher },
