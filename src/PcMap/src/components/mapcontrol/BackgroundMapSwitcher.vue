@@ -52,7 +52,7 @@ export default defineComponent({
       label: '高德路网',
       value: BackgroundMapType.GAODE_ROADNET
     }, {
-      label: '高德交通',
+      label: '高德路况',
       value: BackgroundMapType.GAODE_TRAFFIC
     }, {
       label: '高德路网+影像',
@@ -63,9 +63,12 @@ export default defineComponent({
     }, {
       label: '腾讯影像',
       value: BackgroundMapType.QQ_SATELLITE
+    // }, {
+    //   label: '腾讯路网+影像',
+    //   value: BackgroundMapType.QQ_ROAD_SATELLITE
     }, {
-      label: '腾讯路网+影像',
-      value: BackgroundMapType.QQ_ROAD_SATELLITE
+      label: '腾讯路况',
+      value: BackgroundMapType.QQ_TRAFFIC
     }, {
       label: '天地图街道地图',
       value: BackgroundMapType.TIANDITU_NORMAL_MAP
@@ -96,6 +99,9 @@ export default defineComponent({
     }, {
       label: '百度路网+影像',
       value: BackgroundMapType.BAIDU_HYBRID_MAP
+    }, {
+      label: '无背景地图',
+      value: BackgroundMapType.NOT_SET
     }]
 
     const onSelectedValueChanged = (val) => {
@@ -111,8 +117,12 @@ export default defineComponent({
           return
         }
       }
-      _backgroundMap.value = ''
+      _backgroundMap.value = {
+        label: '无背景地图',
+        value: BackgroundMapType.NOT_SET
+      }
     }
+
     onMounted(() => {
       setSelectedBkmapStatus(props.backgroundMap)
     })
