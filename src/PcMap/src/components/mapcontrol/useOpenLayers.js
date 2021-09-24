@@ -38,8 +38,7 @@ function useOpenLayers (props, context, control) {
   // control.view.on('change:center', (e) => {
   //   olViewChanged(control)
   // })
-
-  useOperation(control)
+  useOperation(props, context, control)
 }
 
 // function olViewChanged (control) {

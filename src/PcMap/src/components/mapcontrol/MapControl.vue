@@ -22,6 +22,10 @@ import { OperationType } from './useOperation'
 export default defineComponent({
   components: { BackgroundMapSwitcher },
   name: 'MapControl',
+  emits: [
+    'click',
+    'feature_click'
+  ],
   props: {
     backgroundMap: {
       type: Number,
@@ -72,6 +76,7 @@ export default defineComponent({
       bkMapBaidu: null,
       bkMapQQ: null,
       backgroundMap: props.backgroundMap,
+      operation: props.operation,
       // 是否需要gcj02纠偏
       gcj02Correct: props.gcj02Correct
     }
