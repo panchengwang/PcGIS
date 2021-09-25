@@ -63,8 +63,12 @@ function updateTiandituView (control) {
 }
 
 function loadTiandituMapAPI (control) {
+  control.$q.loading.show({
+    message: '正在加载天地图, 请稍候...'
+  })
   const url = 'http://api.tianditu.gov.cn/api?v=4.0&tk='
   $.getScript(url + MapKeys.tianditu, () => {
+    control.$q.loading.hide()
     initTiandituMap(control)
   })
 }

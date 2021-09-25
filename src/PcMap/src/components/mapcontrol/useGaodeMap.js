@@ -91,8 +91,12 @@ function updateGaodeView (control) {
 }
 
 function loadGaodeMapAPI (control) {
+  control.$q.loading.show({
+    message: '正在加载高德地图, 请稍候...'
+  })
   const url = 'https://webapi.amap.com/maps?v=1.4.15&key='
   $.getScript(url + MapKeys.gaode, () => {
+    control.$q.loading.hide()
     initGaodeMap(control)
   })
 }

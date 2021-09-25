@@ -7,8 +7,8 @@
           dense
           round
         >
-          <q-avatar size="30px">
-            <img src="icons/logo_small.jpg">
+          <q-avatar size="36px" color="white">
+            <img src="icons/logo_48.png" style="height:24px;width:24px;border-radius: 0;">
           </q-avatar>
         </q-btn>
 

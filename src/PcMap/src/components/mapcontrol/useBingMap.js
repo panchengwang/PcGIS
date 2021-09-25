@@ -103,9 +103,13 @@ window.__bingApiCallBack = function () {
 }
 
 function loadBingMapAPI (control) {
+  control.$q.loading.show({
+    message: '正在加载bing地图, 请稍候...'
+  })
   const url = 'https://www.bing.com/api/maps/mapcontrol?callback=__bingApiCallBack&key='
   $.getScript(url + MapKeys.bing, () => {
     setTimeout(() => {
+      control.$q.loading.hide()
       initBingMap(control)
     }, 1000)
   })

@@ -12,7 +12,7 @@
 
 <script>
 import { defineComponent, onMounted } from 'vue'
-import { uid } from 'quasar'
+import { uid, useQuasar } from 'quasar'
 import { useOpenLayers } from './useOpenLayers'
 import { useBackgroundMap, setBackGroundMap, BackgroundMapType } from './useBackgroundMap'
 import { fromLonLat } from 'ol/proj'
@@ -47,7 +47,8 @@ export default defineComponent({
       required: true,
       default: () => {
         return {
-          center: fromLonLat([112.92688166666667, 28.164605]),
+          // center: fromLonLat([112.92688166666667, 28.164605]),
+          center: fromLonLat([111.30850576967045, 27.32099818500464]),
           maxZoom: 23,
           zoom: 15
         }
@@ -78,7 +79,9 @@ export default defineComponent({
       backgroundMap: props.backgroundMap,
       operation: props.operation,
       // 是否需要gcj02纠偏
-      gcj02Correct: props.gcj02Correct
+      gcj02Correct: props.gcj02Correct,
+
+      $q: useQuasar()
     }
 
     onMounted(() => {

@@ -107,9 +107,13 @@ window.__initQQMap = () => {
 }
 
 function loadQQMapAPI (control) {
+  control.$q.loading.show({
+    message: '正在加载腾讯地图, 请稍候...'
+  })
   const url = 'https://map.qq.com/api/gljs?v=1.exp&callback=__initQQMap&key='
   $.getScript(url + MapKeys.qq, () => {
     setTimeout(() => {
+      control.$q.loading.hide()
       initQQMap(control)
     }, 1000)
   })

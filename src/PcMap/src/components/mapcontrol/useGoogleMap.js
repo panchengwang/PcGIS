@@ -99,8 +99,12 @@ function updateGoogleView (control) {
 
 function loadGoogleMapAPI (control) {
   // window.__currentControl = control
+  control.$q.loading.show({
+    message: '正在加载谷歌地图, 请稍候...'
+  })
   const url = 'https://maps.googleapis.com/maps/api/js?key='
   $.getScript(url + MapKeys.google, () => {
+    control.$q.loading.hide()
     initGoogleMap(control)
   })
 }

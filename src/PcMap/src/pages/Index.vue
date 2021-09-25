@@ -4,7 +4,7 @@
       :backgroundMap="backgroundMap"
       :operation="operation.value"
       @click="onMapClicked" />
-    <q-select
+    <!-- <q-select
         label="选择绘制"
         outlined
         v-model="operation"
@@ -12,7 +12,7 @@
         options-dense
         bg-color="grey-3"
         style="z-index: 3;position: absolute; top: 10px; right: 300px; min-width: 180px"
-      />
+      /> -->
   </q-page>
 </template>
 
