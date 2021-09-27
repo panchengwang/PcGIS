@@ -1,14 +1,14 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header>
-      <q-toolbar class="q-ma-none">
+      <q-toolbar class="q-ma-none" style="min-height:36px;">
         <q-btn
           flat
           dense
           round
         >
-          <q-avatar size="36px" color="white">
-            <img src="icons/logo_48.png" style="height:24px;width:24px;border-radius: 0;">
+          <q-avatar size="26px" color="white">
+            <img src="icons/logo_48.png" style="height:20px;width:20px;border-radius: 0;">
           </q-avatar>
         </q-btn>
 

@@ -1,0 +1,75 @@
+.fit-to-parent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+}
+
+ /* 隐藏google的水印 */
+.gmnoprint {
+  display: none !important;
+}
+
+.gm-style-moc{
+  display: none !important;
+}
+
+.gm-fullscreen-control {
+  display: none !important;
+}
+
+.bk_google > div:nth-child(2) {
+  display: none !important;
+}
+
+.bk_google > div:nth-child(1) > div > div:nth-child(2) > div:nth-child(1) > div:nth-child(5) > div > div > div {
+  display: none !important;
+}
+
+.bk_google > div:nth-child(1) > div > div:nth-child(15) > div {
+  display: none !important;
+}
+
+.NavBar_Container {
+  display: none !important;
+}
+
+/* 隐藏bing地图的水印 */
+.bm_bottomLeftOverlay{
+  display: none !important;
+}
+
+.bm_bottomRightOverlay{
+  display: none !important;
+}
+
+#missingCredential {
+  display: none !important;
+}
+
+.amap-copyright {
+  display: none !important;
+}
+
+.amap-logo {
+  display: none !important;
+}
+
+.tdt-control-copyright {
+  display: none !important;
+}
+
+/* 隐藏QQ水印 */
+.smnoprint {
+  display: none !important;
+}
+
+.bk_qq > div > div:nth-child(2) {
+  display: none !important;
+}
+
+.bk_qq > div > div:nth-child(3) {
+  display: none !important;
+}
