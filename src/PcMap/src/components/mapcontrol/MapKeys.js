@@ -1,12 +1,10 @@
 const MapKeys = {
-  google: '请填写从google申请到的地图服务key',
-  tianditu: '请填写从天地图网站申请到的地图服务key',
-  gaode: '请填写从高德地图网站申请到的地图服务key',
-  bing: '请填写从必应地图网站申请到的地图服务key',
-  baidu: '请填写从百度地图网站申请到的地图服务key',
-  qq: '请填写从腾讯地图网站申请到的地图服务key'
+  google: 'AIzaSyCdcue_j1N9SPgrm8hi0bBKrj2C_hb0FIM',
+  tianditu: '2e1e0958d50f81774142f573f690f97d',
+  gaode: '369582c5767cb4a40a1d558316b04b82',
+  bing: 'Aq6fXDMn4ZhWgOlk3IWUKC1EJnflPHuC1IRK38FDjuUSlQEOsm9DAKuLSZEaxIoQ',
+  baidu: 'qUBw8yfnRDxhtqNG5KRNv1OZFXiVSxYe',
+  qq: 'PY7BZ-XTXAF-MXZJZ-JTSWZ-DCZFS-E7BDW'
 }
 
-export {
-  MapKeys
-}
+export default MapKeys

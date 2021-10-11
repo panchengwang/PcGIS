@@ -11,11 +11,12 @@ import { createStore } from 'vuex'
  * async/await or return a Promise which resolves
  * with the Store instance.
  */
+import user from './user'
 
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
-      // example
+      user
     },
 
     // enable strict mode (adds overhead!)

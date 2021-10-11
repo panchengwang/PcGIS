@@ -1,15 +1,17 @@
 <template>
-  <q-select
-        label="背景地图"
-        outlined
-        dense
-        v-model="_backMap"
-        :options="options"
-        options-dense
-        bg-color="grey-3"
-        style=""
-        @update:model-value="onSelectedValueChanged"
+  <div>
+    <q-select
+          label="背景地图"
+          outlined
+          dense
+          v-model="_backMap"
+          :options="options"
+          options-dense
+          bg-color="grey-3"
+          style=""
+          @update:model-value = "onSelectedValueChanged"
       />
+  </div>
 </template>
 
 <script>
@@ -18,19 +20,17 @@ import BackMapType from './BackMapType'
 
 export default defineComponent({
   props: {
-    backMap: {
+    modelValue: {
       type: Number,
-      require: false,
       default: () => {
         return BackMapType.OPENSTREETMAP
       }
     }
   },
   emits: [
-    'backMapChanged'
+    'update:modelValue'
   ],
   setup (props, context) {
-    const _backMap = ref(BackMapType.OPENSTREETMAP)
     const options = [{
       label: 'Open Street Map',
       value: BackMapType.OPENSTREETMAP
@@ -110,9 +110,9 @@ export default defineComponent({
 
     const onSelectedValueChanged = (val) => {
       _backMap.value = val
-      context.emit('backMapChanged', val.value)
+      context.emit('update:modelValue', val.value)
     }
-
+    const _backMap = ref({})
     const setSelectedBkmapStatus = (type) => {
       for (let i = 0; i < options.length; i++) {
         const element = options[i]
@@ -128,11 +128,11 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      setSelectedBkmapStatus(props.backMap)
+      setSelectedBkmapStatus(props.modelValue)
     })
 
     watch(
-      () => props.backMap,
+      () => props.modelValue,
       (first, second) => {
         setSelectedBkmapStatus(first)
       }

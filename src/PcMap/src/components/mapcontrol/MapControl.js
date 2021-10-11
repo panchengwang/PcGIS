@@ -11,6 +11,8 @@ import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer'
 import { OSM, Vector as VectorSource } from 'ol/source'
 import { defaults as olDefaultControls } from 'ol/control'
 import { wgs84togcj02 } from './Gcj02Utils'
+import Draw from 'ol/interaction/Draw'
+import { DrawType } from './OperationType'
 
 window.__mapApiOK = {
   google: false,
@@ -55,7 +57,7 @@ class MapControl {
     }
     me.view = opts.view || {
       center: fromLonLat([111.30850576967045, 27.32099818500464]),
-      maxZoom: 20,
+      maxZoom: 21,
       zoom: 15
     }
     me.view = new View({
@@ -77,6 +79,7 @@ class MapControl {
     me.divs.bk = $('<div>').appendTo(me.divs.map).addClass('fit-to-parent').css({ 'z-index': 1 }).attr({ id: me.ids.bk })
 
     me.maps = {
+      ol: null,
       osm: new TileLayer({
         source: new OSM(),
         visible: true
@@ -105,10 +108,23 @@ class MapControl {
         zoom: false
       })
     })
+    me.draws = {
+      Point: new Draw({ source: me.draftSource, type: 'Point' }),
+      LineString: new Draw({ source: me.draftSource, type: 'LineString' }),
+      Polygon: new Draw({ source: me.draftSource, type: 'Polygon' })
+    }
+    me.curDrawOperation = DrawType.NoThing
   }
 
-  doSomething () {
-    console.log('do some thing')
+  setDrawOperation (op) {
+    const me = this
+    me.curDrawOperation = op
+    Object.keys(me.draws).forEach((k) => {
+      me.maps.ol.removeInteraction(me.draws[k])
+      if (op === k) {
+        me.maps.ol.addInteraction(me.draws[k])
+      }
+    })
   }
 
   setBackMap (bktype) {
@@ -663,6 +679,10 @@ class MapControl {
   _isBing (bktype) {
     return bktype === BackMapType.BING_ROADMAP ||
       bktype === BackMapType.BING_SATELLITE
+  }
+
+  doSomething () {
+    console.log('do some thing')
   }
 }
 

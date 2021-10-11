@@ -12,11 +12,13 @@
           </q-avatar>
         </q-btn>
 
-        <q-toolbar-title>
-          PcMap
+        <q-toolbar-title style="font-size: 16px;">
+          PcMap -- 麓山老将的GIS呓语
         </q-toolbar-title>
 
-        <div>wang_wang_lao@163.com</div>
+        <div>
+          <user-menu v-if="store.state.user.token !== ''"></user-menu>
+        </div>
       </q-toolbar>
     </q-header>
 
@@ -48,22 +50,24 @@
 
 <script>
 
-import { defineComponent } from 'vue'
+import UserMenu from 'src/components/controls/UserMenu.vue'
+import { defineComponent, onMounted } from 'vue'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   name: 'MainLayout',
 
   components: {
+    UserMenu
   },
 
   setup () {
-    // const leftDrawerOpen = ref(false)
-
+    const store = useStore()
+    onMounted(() => {
+      // console.log(store)
+    })
     return {
-      // leftDrawerOpen,
-      // toggleLeftDrawer () {
-      //   leftDrawerOpen.value = !leftDrawerOpen.value
-      // }
+      store
     }
   }
 })
